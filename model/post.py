@@ -25,4 +25,4 @@ def post():
         })
         print(result)
         return redirect(url_for('post'))
-    return render_template("/index")
+    return render_template("/")

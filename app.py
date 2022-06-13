@@ -34,9 +34,9 @@ app.register_blueprint(er)
 app.register_blueprint(so)
 
 #處理路由
-@app.route("/index")
+@app.route("/")
 def index():
     return render_template("index.html")
 
 #啟動伺服器
-app.run(port=3000, debug=True)
+app.run()
