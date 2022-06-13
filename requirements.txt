@@ -1,2 +1,3 @@
 Flask
 gunicorn
+pymong==5.0.8
