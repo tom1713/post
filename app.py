@@ -1,5 +1,6 @@
 #初始化 flask 伺服器
 from flask import *
+import os
 # from model.member import mb
 # from model.register import regs
 # from model.signin import sin
