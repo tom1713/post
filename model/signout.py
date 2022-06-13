@@ -6,4 +6,4 @@ so = Blueprint('so', __name__) # 第一個引數為藍圖名稱，隨便取
 def signout():
     #移除session中的會員資訊
     del session["nickname"]
-    return redirect("/")
+    return redirect("/index")

@@ -7,4 +7,4 @@ def member():
     if "nickname" in session:
         return render_template("member.html")
     else:
-        return redirect("/")
+        return redirect("/index")
