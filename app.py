@@ -27,8 +27,7 @@ app.secret_key = "123"
 #處理路由
 @app.route("/")
 def index():
-    return "OK"
-    #render_template("index.html")
+    return render_template("index.html")
 
 #啟動伺服器
 port = int(os.environ.get('PORT', 5000))
