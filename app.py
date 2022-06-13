@@ -26,7 +26,8 @@ app.secret_key = "123"
 #處理路由
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return "OK"
+    #render_template("index.html")
 
 #啟動伺服器
 app.run()
