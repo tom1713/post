@@ -24,5 +24,5 @@ def post():
             "date" : date
         })
         print(result)
-        return redirect(url_for('post'))
+        return redirect(url_for('ps.post'))
     return render_template("/")
