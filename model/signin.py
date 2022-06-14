@@ -1,4 +1,6 @@
 from flask import *
+#from model.db import db
+
 import time, json
 #初始化資料庫連線
 import pymongo
