@@ -30,6 +30,5 @@ def index():
     return render_template("index.html")
 
 #啟動伺服器
-if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 0))
-    app.run(host='0.0.0.0', port=port, debug=True)
+port = int(os.environ.get('PORT', 0))
+app.run(host='0.0.0.0', port=port, debug=True)
