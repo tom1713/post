@@ -1,5 +1,10 @@
 from flask import *
-from model.db import db
+import time, json
+#初始化資料庫連線
+import pymongo
+client = pymongo.MongoClient("mongodb://root:root123@cluster0.hpcbu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", tls=True)
+db = client.member_system
+print("資料庫連線建立成功")
 
 """藍圖物件可看做一個縮小版的app物件"""
 sin = Blueprint('sin', __name__) # 第一個引數為藍圖名稱，隨便取
