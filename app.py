@@ -1,10 +1,3 @@
-import time, json
-#初始化資料庫連線
-import pymongo
-client = pymongo.MongoClient("mongodb://root:root123@cluster0.hpcbu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", SSL=True)
-db = client.member_system
-print("資料庫連線建立成功")
-
 #初始化 flask 伺服器
 from flask import *
 import os
@@ -38,4 +31,5 @@ def index():
 
 #啟動伺服器
 port = int(os.environ.get('PORT', 0))
-app.run(host='0.0.0.0', port=port, debug=True)
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=port, debug=True)
