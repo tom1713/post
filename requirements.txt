@@ -1,4 +1,4 @@
-Flask == 2.1.2
-flask_paginate
+Flask 
+flask-paginate
 gunicorn
 pymongo[srv]
