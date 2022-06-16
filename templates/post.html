@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>留言板</title>
+    <link rel="stylesheet" href="/css/bootstrap.css"
 </head>
 <body>
         <center><h1>留言</h1></center>
@@ -16,8 +17,11 @@
         </center>
     <center>
         <table border="2">
+            {{ pagination.info }}
+            <table>
             <thead>
             <tr>
+                <th>筆數</th>
                 <th>標題</th>
                 <th>内容</th>
                 <th>暱稱</th>
@@ -25,15 +29,19 @@
             </tr>
             </thead>
             <tbody>
-            {% for say in says %}
-                <tr>
-                    <td>{{ say['title'] }}</td>
-                    <td>{{ say['text'] }}</td>
-                    <td>{{ say['user'] }}</td>
-                    <td>{{ say['date'] }}</td>
-                </tr>
+            <!--skip((當前頁碼-1)*每頁顯示數).limit(每頁顯示數)  如：點擊第二页--偏移值為10，查找11位以後的數據截取前10個-->
+            {% for say in says.skip((page-1)*per_page).limit(per_page) %}
+              <tr>
+                <td>{{ loop.index + pagination.skip }}</td>
+                <td>{{ say['title'] }}</td>
+                <td>{{ say['text'] }}</td>
+                <td>{{ say['user'] }}</td>
+                <td>{{ say['date'] }}</td>
+              </tr>
             {% endfor %}
             </tbody>
+            </table>
+            {{ pagination.links }}
         </table>
     </center>
 </body>

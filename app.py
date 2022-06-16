@@ -29,6 +29,8 @@ app.register_blueprint(so)
 def index():
     return render_template("index.html")
 
+app.run(debug=True)
+
 #啟動伺服器
-port = int(os.environ.get('PORT', 0))
-app.run(host='0.0.0.0', port=port, debug=True)
+# port = int(os.environ.get('PORT', 0))
+# app.run(host='0.0.0.0', port=port, debug=True)
