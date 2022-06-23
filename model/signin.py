@@ -4,6 +4,8 @@ from model.db import db
 """藍圖物件可看做一個縮小版的app物件"""
 sin = Blueprint('sin', __name__) # 第一個引數為藍圖名稱，隨便取
 
+app.secret_key = "123"
+
 @sin.route("/signin", methods=["GET", "POST"])
 def signin():
     if request.method == "POST":

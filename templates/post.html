@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>留言板</title>
-    <link rel="stylesheet" href="/css/bootstrap.css"
+    <link rel="stylesheet" href="/css/bootstrap.css">
 </head>
 <body>
-        <center><h1>留言</h1></center>
+    <ul class="nav nav-pills justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link" href="signout">登出</a>
+        </li>
+      </ul>
+    <center><h1>留言</h1></center>
         <center>
-            <form action="{{ url_for('ps.post') }}" method="POST">
+            <form class="table" action="{{ url_for('ps.post') }}" method="POST">
                 暱稱: <input type="text" name="say_user"><br>
                 標題: <input type="text" name="say_title"><br>
                 內容: <input type="text" name="say"><br>
@@ -16,16 +21,16 @@
             </form>
         </center>
     <center>
-        <table border="2">
+        <table class="table" border="2">
             {{ pagination.info }}
-            <table>
+            <table class="table table-sm">
             <thead>
             <tr>
-                <th>筆數</th>
-                <th>標題</th>
-                <th>内容</th>
-                <th>暱稱</th>
-                <th>留言時間</th>
+                <th scope="col">筆數</th>
+                <th scope="col">標題</th>
+                <th scope="col">内容</th>
+                <th scope="col">暱稱</th>
+                <th scope="col">留言時間</th>
             </tr>
             </thead>
             <tbody>

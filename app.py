@@ -8,6 +8,8 @@ from model.error import er
 from model.signout import so
 from model.post import ps
 from model.db import db
+from model.update import up
+from flask_paginate import Pagination, get_page_parameter
 
 app = Flask(
     __name__,
@@ -23,11 +25,18 @@ app.register_blueprint(sin)
 app.register_blueprint(ps)
 app.register_blueprint(er)
 app.register_blueprint(so)
+app.register_blueprint(up)
 
 #處理路由
-@app.route("/")
+@app.route("/", methods = ["GET", "POST"])
 def index():
-    return render_template("index.html")
+    collection = db.posts
+    cur = collection.find()
+    per_page = int(request.args.get('per_page', 10))  # 每一頁顯示數量
+    page = request.args.get(get_page_parameter(), type=int, default=1) # 獲取當前為第幾頁
+    url_count = collection.count_documents({})
+    pagination = Pagination(page=page, total=url_count, per_page=per_page, css_framework='bootstrap')
+    return render_template('index.html', page=page, per_page=per_page, count=str(url_count), pagination=pagination, says=cur)
 
 # app.run(debug=True)
 
