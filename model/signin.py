@@ -26,5 +26,6 @@ def signin():
             return redirect("/error?msg=帳號或密碼輸入錯誤")
         #登入成功，導向到會員頁面
         session["nickname"] = result["nickname"]
+        session["email"] = result["email"]
         return redirect("/member")
     return render_template("/signin.html")

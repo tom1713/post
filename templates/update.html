@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改留言</title>
+</head>
+<body>
+    <center><h1>修改留言</h1></center>
+        <center>
+            <form class="table" action="{{ url_for('up.updated') }}" method="POST">
+                標題: <input type="text" name="say_title"><br>
+                內容: <input type="text" name="say"><br>
+                <input type="hidden" name="_id" value="{{ say['_id'] }}">
+                <input type="hidden" name="email" value="{{ say['email'] }}">
+                <button>送出</button>
+            </form>
+        </center>
+    <center>
+        <table class="table" border="2">
+            <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">標題</th>
+                <th scope="col">内容</th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ say['title'] }}</td>
+                <td>{{ say['text'] }}</td>
+              </tr>
+            </tbody>
+            </table>
+            </table>
+    </center>
+</body>
+</html>

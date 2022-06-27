@@ -29,9 +29,9 @@ def post():
         result = collection.insert_one({
             "title" : title,
             "text" : text,
-            "user" : user,
-            "date" : date
+            "user" : session["nickname"],
+            "date" : date,
+            "email" : session["email"],
         })
-        print(result)
         return redirect(url_for('ps.post'))
     return render_template("/")

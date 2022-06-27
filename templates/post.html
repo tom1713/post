@@ -14,7 +14,6 @@
     <center><h1>留言</h1></center>
         <center>
             <form class="table" action="{{ url_for('ps.post') }}" method="POST">
-                暱稱: <input type="text" name="say_user"><br>
                 標題: <input type="text" name="say_title"><br>
                 內容: <input type="text" name="say"><br>
                 <button>送出</button>
@@ -42,6 +41,21 @@
                 <td>{{ say['text'] }}</td>
                 <td>{{ say['user'] }}</td>
                 <td>{{ say['date'] }}</td>
+                <form action="update" method="POST">
+                    <input type="hidden" name="_method" value="PUT">
+                    <input type="hidden" name="user" value="{{ say['user'] }}">
+                    <input type="hidden" name="email" value="{{ say['email'] }}">
+                    <input type="hidden" name="date" value="{{ say['date'] }}">
+                    <td><button>修改</button></td>
+                </form>
+                <form action="delete" method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="user" value="{{ say['user'] }}">
+                    <input type="hidden" name="email" value="{{ say['email'] }}">
+                    <input type="hidden" name="date" value="{{ say['date'] }}">
+                    <input type="hidden" name="_id" value="{{ say['_id'] }}">
+                    <td><button>刪除</button></td>
+                </form>
               </tr>
             {% endfor %}
             </tbody>
@@ -51,3 +65,6 @@
     </center>
 </body>
 </html>
+
+
+  
