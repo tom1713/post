@@ -8,9 +8,10 @@ up = Blueprint('up', __name__) # 第一個引數為藍圖名稱，隨便取
 @up.route("/updated", methods=["POST"])
 def updated():
     if request.method == "POST":
-        title = request.form['say_title']
-        text = request.form['say']
-        _id = request.form['_id']
+        title = request.form.get('say_title')
+        text = request.form.get('say')
+        _id = request.form.get('_id')
+        print(_id)
         collection = db.posts
         result1 = collection.update_one({
             "_id" : ObjectId(_id)

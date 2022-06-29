@@ -53,11 +53,10 @@ def update():
             {"email" : email},
             {"date" : date}
         ]})
-    if request.method == 'POST':
-        if email == user_email:
-            return render_template('update.html',say=result)
-        else:
-            return redirect("/error?msg=沒有權限修改內容")
+    if email == user_email:
+        return render_template('update.html',say=result)
+    else:
+        return redirect("/error?msg=沒有權限修改內容")
 
 @app.route('/delete', methods=['POST'])
 def delete():
@@ -73,19 +72,18 @@ def delete():
             {"email" : email},
             {"date" : date}
         ]})
-    if request.method == 'POST':
-        if email == user_email:
-            result = collection.delete_one({
+    if email == user_email:
+        result = collection.delete_one({
             "_id" : ObjectId(_id)
         })
-            print("實際上刪除的資料有幾筆",result.deleted_count)
-            return redirect(url_for('ps.post'))
-        else:
-            return redirect("/error?msg=沒有權限修改內容")
+        print("實際上刪除的資料有幾筆",result.deleted_count)
+        return redirect(url_for('ps.post'))
+    else:
+        return redirect("/error?msg=沒有權限修改內容")
             
 #啟動伺服器
-# app.run(debug=True)
+app.run(debug=True)
 
 #啟動伺服器
-port = int(os.environ.get('PORT', 0))
-app.run(host='0.0.0.0', port=port, debug=True)
+# port = int(os.environ.get('PORT', 0))
+# app.run(host='0.0.0.0', port=port, debug=True)
